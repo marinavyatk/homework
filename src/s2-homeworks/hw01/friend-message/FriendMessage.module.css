@@ -42,7 +42,7 @@
 }
 
 .friendMessageText {
-
+    white-space: pre-wrap;
 }
 
 .friendTime {
