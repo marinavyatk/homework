@@ -2,6 +2,7 @@ import React from 'react'
 import s from './FriendMessage.module.css'
 import {MessagePropsType} from "../HW1";
 
+
 const FriendMessage = (props: MessagePropsType) => {
     return (
         <div

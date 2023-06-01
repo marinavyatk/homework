@@ -22,8 +22,6 @@ export type SubMessageType = {
     text: string,
     time: string
 }
-
-
 export type MessageType = {
     id: number,
     user: UserType,
@@ -32,8 +30,6 @@ export type MessageType = {
 export type MessagePropsType = {
     message: MessageType
 }
-
-
 // структуру объекта не менять
 export const message0: MessageType = {
     id: 0,
