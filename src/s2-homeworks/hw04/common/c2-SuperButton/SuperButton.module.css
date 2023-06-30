@@ -36,7 +36,7 @@
 
 .default:hover {
     background-color: #0080FF;
-    width: 167px;
+    /*width: 167px;*/
 }
 
 .red:hover {
@@ -49,7 +49,7 @@
 
 .secondary:hover {
     background-color:  #E5F0FA;
-    width: 167px;
+    /*width: 167px;*/
 }
 
 

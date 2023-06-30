@@ -51,6 +51,15 @@
     border: none;
     box-shadow: none;
     background-color: white;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+}
+.close:hover{
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .close img {
