@@ -18,7 +18,6 @@ export type UserType = {
 }
 
 const initialPeople: UserType[] = [
-    // студенты могут поменять имя/возраст/количество объектов, _id должны быть целочисленные
     {_id: 0, name: 'Кот', age: 3},
     {_id: 1, name: 'Александр', age: 66},
     {_id: 2, name: 'Коля', age: 16},
@@ -36,26 +35,27 @@ const HW8 = () => {
     const sortUp = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'})
-        ) // в алфавитном порядке a.name > b.name
+        )
         setCurrentSort('up')
     }
 
     const sortDown = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'sort', payload: 'down'})
-        ) // в обратном порядке a.name < b.name}
+        )
         setCurrentSort('down')
     }
     const check18 = () => {
         setPeople(
             homeWorkReducer(initialPeople, {type: 'check', payload: 18})
-        ) // совершеннолетние
+        )
         setCurrentSort('18')
     }
 
     return (
         <div id={'hw3'}>
             <div className={s2.hwTitle}>Homework #8</div>
+            <hr/>
             <div className={s2.hw}>
                 <div className={s.container}>
                     <div className={s.buttonsContainer}>
@@ -94,6 +94,7 @@ const HW8 = () => {
                     </table>
                 </div>
             </div>
+            <hr/>
         </div>
     )
 }

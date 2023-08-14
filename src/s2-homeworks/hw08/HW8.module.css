@@ -1,23 +1,42 @@
 .item {
+    padding: 15px;
+    border-bottom: solid 1px #E5E5E5;
+    height: 35px;
 }
 
 .item:last-of-type {
+    border-bottom: none;
 }
 
 .users {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .buttonsContainer {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-bottom: 18px;
 }
 
 .container {
+    width: 50%;
+    font-family: Roboto, sans-serif;
 }
 
 .thead {
+    background-color: #E5E5E5;
+    font-weight: bold;
 }
 
 .nameCol {
+    position: sticky;
+    padding: 15px;
 }
 
 .ageCol {
+    position: sticky;
+    font-weight: bold;
 }
