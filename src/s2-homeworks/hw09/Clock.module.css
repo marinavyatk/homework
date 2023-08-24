@@ -4,6 +4,10 @@
     width: 35px;
     color: white;
     margin: 27px 0;
+    /*color: #b21232;*/
+}
+.buttonsContainer button:disabled{
+    color: white;
 }
 
 .clock {

@@ -6,6 +6,7 @@ import SuperButton from '../hw04/common/c2-SuperButton/SuperButton'
 import s2 from '../../s1-main/App.module.css'
 import {Loader} from './Loader'
 
+
 /*
 * 1 - в файле loadingReducer.ts дописать типы и логику
 * 2 - получить isLoading из редакса
@@ -15,18 +16,22 @@ import {Loader} from './Loader'
 
 const HW10 = () => {
     // useSelector, useDispatch // пишет студент
-    const isLoading = false
+    const isLoading = useSelector<AppStoreType, boolean>(state => state.loading.isLoading)
+    console.log(isLoading)
+    // const isLoading = false
+    const dispatch = useDispatch()
+    const setLoading = () => {
+        dispatch(loadingAC(!isLoading));
+        setTimeout(() => {
+            dispatch(loadingAC(isLoading));
 
-    const setLoading = () => { // пишет студент // показать крутилку на 1,5 секунд
-        // dispatch
-
-        // setTimeout
+        }, 1500);
     }
 
     return (
         <div id={'hw10'}>
             <div className={s2.hwTitle}>Homework #10</div>
-
+            <hr/>
             <div className={s2.hw}>
                 {isLoading ? (
                     <div id={'hw10-loading'}>
@@ -41,6 +46,7 @@ const HW10 = () => {
                     </SuperButton>
                 )}
             </div>
+            <hr/>
         </div>
     )
 }

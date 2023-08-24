@@ -1,3 +1,26 @@
 .loader {
-    /*свг и/или анимация*/
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: rotate 2s linear infinite;
+    background: linear-gradient(45deg, #0080FF, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.innerCircle {
+    background-color: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
 }
