@@ -1,22 +1,43 @@
 .buttonsContainer {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 88px;
 }
 
+.buttonsContainer button{
+    width: unset;
+    font-family: Montserrat, sans-serif;
+}
+.buttonsContainer button:disabled{
+    background-color: white;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
 .responseContainer {
+    display: flex;
+    gap: 87px;
+    justify-content: center;
+    align-items: center;
 }
 
 .imageContainer {
+
 }
 
 .image {
 }
 
 .textContainer{
+    width: 510px;
 }
 
 .code {
+    font-size: 30px;
+    margin-bottom: 12px;
 }
 
 .text {
+    white-space: pre-line;
 }
 .info {
 }
