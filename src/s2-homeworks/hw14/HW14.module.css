@@ -1,7 +1,21 @@
 .tech {
-
+    line-height: 24px;
 }
 
 .loading {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #4D4D4D;
+}
 
+.commonInputBlock {
+    position: relative;
+    width: 468px;
+}
+
+.commonInputBlock input {
+    margin-bottom: 20px;
+    width: 468px;
+    font-size: 14px;
 }
