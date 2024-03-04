@@ -23,7 +23,6 @@ const HW12 = () => {
     // взять ид темы из редакса
     const dispatch = useDispatch();
     const themeId = useSelector<AppStoreType>(state => state.theme.themeId)
-    console.log(themeId)
 
     useEffect(() => {
         document.documentElement.dataset.theme = themeId + ''

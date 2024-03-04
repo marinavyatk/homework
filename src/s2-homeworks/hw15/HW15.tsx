@@ -5,6 +5,7 @@ import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
+import {Loader} from '../hw10/Loader'
 
 /*
 * 1 - дописать SuperPagination
@@ -47,16 +48,18 @@ const HW15 = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [techs, setTechs] = useState<TechType[]>([])
 
-    const sendQuery = (params: any) => {
+    const sendQuery = (params: ParamsType) => {
         setLoading(true)
         getTechs(params)
             .then((res) => {
                 // делает студент
+                if (res) {
+                    setTotalCount(res.data.totalCount);
+                    setTechs(res.data.techs);
 
-                // сохранить пришедшие данные
+                }
+            }).finally(() => setLoading(false))
 
-                //
-            })
     }
 
     const onChangePagination = (newPage: number, newCount: number) => {
@@ -69,6 +72,16 @@ const HW15 = () => {
         // setSearchParams(
 
         //
+
+        setPage(newPage);
+        setCount(newCount);
+        sendQuery({
+            sort: sort,
+            page: newPage,
+            count: newCount
+        })
+        setSearchParams(newPage.toString())
+        // setLoading(true)
     }
 
     const onChangeSort = (newSort: string) => {
@@ -81,11 +94,21 @@ const HW15 = () => {
         // setSearchParams(
 
         //
+
+        setSort(newSort);
+        setPage(1);
+        sendQuery({
+            sort: sort,
+            page: 1,
+            count: count
+        })
+        setSearchParams("1")
+        // setLoading(true)
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({page: params.page, count: params.count})
+        sendQuery({page: 1, count: 4, sort: sort})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
     }, [])
@@ -105,31 +128,41 @@ const HW15 = () => {
     return (
         <div id={'hw15'}>
             <div className={s2.hwTitle}>Homework #15</div>
-
+            <hr/>
             <div className={s2.hw}>
-                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
 
-                <SuperPagination
-                    page={page}
-                    itemsCountForPage={count}
-                    totalCount={totalCount}
-                    onChange={onChangePagination}
-                />
+                {idLoading && <div id={'hw15-loading'} className={s.loading}>
+                    <Loader/>
+                </div>}
 
-                <div className={s.rowHeader}>
-                    <div className={s.techHeader}>
-                        tech
-                        <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                <div className={s.commonContainer}>
+
+
+                    <SuperPagination
+                        page={page}
+                        itemsCountForPage={count}
+                        totalCount={totalCount}
+                        onChange={onChangePagination}
+                    />
+
+                    <div className={s.rowHeader}>
+                        <div className={s.columnName}>
+                            tech
+                            <SuperSort sort={sort} value={'tech'} onChange={onChangeSort}/>
+                        </div>
+
+                        <div className={s.columnName}>
+                            developer
+                            <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
+                        </div>
                     </div>
-
-                    <div className={s.developerHeader}>
-                        developer
-                        <SuperSort sort={sort} value={'developer'} onChange={onChangeSort}/>
-                    </div>
+                    {mappedTechs}
                 </div>
 
-                {mappedTechs}
+
             </div>
+            <hr/>
+
         </div>
     )
 }

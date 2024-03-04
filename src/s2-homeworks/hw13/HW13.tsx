@@ -44,7 +44,7 @@ const HW13 = () => {
             })
             .catch((e) => {
                 // дописать
-                console.log(e)
+
                 if (e.code !== 'ERR_NETWORK') {
                     const errorCode = e.response.status;
                     setCode(`Ошибка ${errorCode}!`)

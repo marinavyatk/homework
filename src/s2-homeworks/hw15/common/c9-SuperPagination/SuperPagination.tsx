@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import SuperSelect from '../../../hw07/common/c5-SuperSelect/SuperSelect'
 import {Pagination} from '@mui/material'
 import s from './SuperPagination.module.css'
@@ -16,13 +16,20 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
         page, itemsCountForPage, totalCount, onChange, id = 'hw15',
     }
 ) => {
-    const lastPage = 10 // пишет студент // вычислить количество страниц
-
-    const onChangeCallback = (event: any, page: number) => {
+    const lastPage =  Math.ceil(totalCount/itemsCountForPage);
+    // пишет студент // вычислить количество страниц
+const [selectedValue, setSelectedValue] = useState(itemsCountForPage);
+const [selectedPage, setSelectedPage] = useState(page);
+    const onChangeCallback = (event: ChangeEvent<unknown>, newPage: number) => {
+        setSelectedPage(newPage);
+        onChange(newPage, selectedValue);
         // пишет студент
     }
 
-    const onChangeSelect = (event: any) => {
+    const onChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+        setSelectedValue(+event.currentTarget.value)
+        onChange(1, +event.currentTarget.value)
+        setSelectedPage(1)
         // пишет студент
     }
 
@@ -33,11 +40,13 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
                 sx={{
                     // стили для Pagination // пишет студент
                 }}
-                page={page}
+                page={selectedPage}
                 count={lastPage}
                 onChange={onChangeCallback}
                 hideNextButton
                 hidePrevButton
+                color="primary"
+                shape="rounded"
             />
 
             <span className={s.text1}>
@@ -46,7 +55,7 @@ const SuperPagination: React.FC<SuperPaginationPropsType> = (
 
             <SuperSelect
                 id={id + '-pagination-select'}
-                value={itemsCountForPage}
+                value={selectedValue}
                 options={[
                     {id: 4, value: 4},
                     {id: 7, value: 7},

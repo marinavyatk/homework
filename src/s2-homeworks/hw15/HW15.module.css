@@ -1,27 +1,68 @@
+.commonContainer {
+    width: 50%;
+    margin-bottom: 110px;
+    /*display: flex; !* Добавляем для корректной работы высоты 100% *!*/
+    /*flex-direction: column;*/
+    /*position: relative;*/
+}
+
 .tech {
-    width: 50vw;
+    width: 50%;
 }
 
 .developer {
 
 }
 
-.techHeader {
-    width: 50vw;
+.columnName {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.developerHeader {
-
+.columnName span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .row {
     display: flex;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 10px;
+}
+
+.row:last-child {
+    border-bottom: none;
 }
 
 .rowHeader {
     display: flex;
+    background-color: #E5E5E5;
+    padding: 10px;
 }
 
 .loading {
-
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    height: 100%;
 }
+
+.iconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconContainer img {
+    max-height: 10px;
+    max-width: 6px;
+    margin-left: 3px;
+}
+
