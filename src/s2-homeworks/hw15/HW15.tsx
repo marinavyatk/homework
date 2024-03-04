@@ -23,7 +23,7 @@ type TechType = {
 }
 
 type ParamsType = {
-    sort: string
+    sort?: string
     page: number
     count: number
 }
@@ -56,7 +56,6 @@ const HW15 = () => {
                 if (res) {
                     setTotalCount(res.data.totalCount);
                     setTechs(res.data.techs);
-
                 }
             }).finally(() => setLoading(false))
 
@@ -64,51 +63,30 @@ const HW15 = () => {
 
     const onChangePagination = (newPage: number, newCount: number) => {
         // делает студент
-
-        // setPage(
-        // setCount(
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
-
         setPage(newPage);
         setCount(newCount);
         sendQuery({
-            sort: sort,
             page: newPage,
             count: newCount
         })
-        setSearchParams(newPage.toString())
-        // setLoading(true)
+        setSearchParams(sort)
     }
 
     const onChangeSort = (newSort: string) => {
         // делает студент
-
-        // setSort(
-        // setPage(1) // при сортировке сбрасывать на 1 страницу
-
-        // sendQuery(
-        // setSearchParams(
-
-        //
-
         setSort(newSort);
         setPage(1);
         sendQuery({
-            sort: sort,
+            sort: newSort,
             page: 1,
             count: count
         })
-        setSearchParams("1")
-        // setLoading(true)
+        setSearchParams(newSort)
     }
 
     useEffect(() => {
         const params = Object.fromEntries(searchParams)
-        sendQuery({page: 1, count: 4, sort: sort})
+        sendQuery({page: 1, count: 4})
         setPage(+params.page || 1)
         setCount(+params.count || 4)
     }, [])
@@ -130,21 +108,16 @@ const HW15 = () => {
             <div className={s2.hwTitle}>Homework #15</div>
             <hr/>
             <div className={s2.hw}>
-
                 {idLoading && <div id={'hw15-loading'} className={s.loading}>
                     <Loader/>
                 </div>}
-
                 <div className={s.commonContainer}>
-
-
                     <SuperPagination
                         page={page}
                         itemsCountForPage={count}
                         totalCount={totalCount}
                         onChange={onChangePagination}
                     />
-
                     <div className={s.rowHeader}>
                         <div className={s.columnName}>
                             tech
@@ -158,11 +131,8 @@ const HW15 = () => {
                     </div>
                     {mappedTechs}
                 </div>
-
-
             </div>
             <hr/>
-
         </div>
     )
 }
