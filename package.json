@@ -1,8 +1,7 @@
 {
   "name": "hws2",
-  "homepage": "https://marinavyatk.github.io/homework-chat",
+  "homepage": "https://marinavyatk.github.io/homework",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
@@ -32,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
